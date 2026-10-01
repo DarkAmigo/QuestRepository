@@ -28,7 +28,6 @@ class JunkStorage(StorageBackend):
 
                 file.write(f"{item.name}|{item.quantity}|{value}\n")
 
-    # Читання предметів із файлу
     def parse(self, filename: str) -> list[JunkItem]:
         items = []
 
