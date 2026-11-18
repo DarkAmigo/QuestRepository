@@ -10,7 +10,6 @@ class InventoryApp:
         
         self.repo = InventoryRepository()
 
-        # Змінні для полів введення
         self.id_var = tk.StringVar()
         self.name_var = tk.StringVar()
         self.category_var = tk.StringVar()
@@ -41,7 +40,6 @@ class InventoryApp:
         main_frame = ttk.Frame(self.root, padding=10)
         main_frame.pack(fill=tk.BOTH, expand=True)
 
-        # Верхня панель: Пошук
         search_frame = ttk.LabelFrame(main_frame, text="Швидкий пошук", padding=5)
         search_frame.pack(fill=tk.X, padx=5, pady=5)
         
@@ -49,7 +47,6 @@ class InventoryApp:
         search_entry = ttk.Entry(search_frame, textvariable=self.search_var, width=40)
         search_entry.pack(side=tk.LEFT, padx=5)
 
-        # Середня частина: Таблиця (Treeview) з прокруткою
         table_frame = ttk.Frame(main_frame)
         table_frame.pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
 
@@ -74,7 +71,6 @@ class InventoryApp:
         
         self.tree.bind("<<TreeviewSelect>>", self.on_row_select)
 
-        # Нижня частина: Форма введення та кнопки
         bottom_frame = ttk.Frame(main_frame, padding=5)
         bottom_frame.pack(fill=tk.X, padx=5, pady=5)
 
@@ -96,7 +92,6 @@ class InventoryApp:
             entry.grid(row=row, column=col+1, sticky=tk.W, padx=5, pady=5)
             self.entries[key] = entry
 
-        # Панель кнопок
         btn_frame = ttk.Frame(bottom_frame, padding=5)
         btn_frame.pack(side=tk.RIGHT, fill=tk.Y, padx=5)
 
@@ -105,7 +100,6 @@ class InventoryApp:
         ttk.Button(btn_frame, text="Видалити", command=self.delete_record, width=15).pack(fill=tk.X, pady=3)
         ttk.Button(btn_frame, text="Очистити форму", command=self.clear_form, width=15).pack(fill=tk.X, pady=3)
 
-        # Статус-бар
         self.status_var = tk.StringVar()
         self.status_var.set("Готово до роботи.")
         status_bar = ttk.Label(self.root, textvariable=self.status_var, relief=tk.SUNKEN, anchor=tk.W)
